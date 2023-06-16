@@ -13,7 +13,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
-
+/**
+ * Esta clase es la que se encarga de hacer las peticiones a la API de Spotify
+ * */
 class SpotifyService @Inject constructor() {
     private var api: SpotifyAppApi
 
@@ -63,7 +65,7 @@ class SpotifyService @Inject constructor() {
         }
     }
 
-    suspend fun getAlbumTracks(albumID: String): List<SimpleTrack> {
+    private suspend fun getAlbumTracks(albumID: String): List<SimpleTrack> {
         return runBlocking {
             val (_, items) = api.albums.getAlbumTracks(albumID, market = Market.US)
             items

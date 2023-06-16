@@ -10,16 +10,7 @@ import ic.yao.musicapp.data.database.entities.FavoriteArtist
 import ic.yao.musicapp.data.database.entities.RecentSearchedArtist
 import ic.yao.musicapp.data.model.ArtistModel
 import ic.yao.musicapp.data.repository.MusicAppRepository
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.format.FormatStyle
 import javax.inject.Inject
 
 @HiltViewModel
@@ -70,7 +61,7 @@ class ArtistViewModel @Inject constructor(
     }
 
     suspend fun searchArtist(artistName: String) = repository.getArtist(artistName)
-    suspend fun searchAlbums(artistId: String) = repository.getAllAlbums(artistId)
+    suspend fun searchAlbums(artistName: String) = repository.getAllAlbums(artistName)
 
     fun onEvent(event: SearchEvent) {
         when (event) {

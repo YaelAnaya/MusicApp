@@ -6,11 +6,11 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 @Parcelize
-data class ArtistModel (
+data class ArtistModel(
     val id: String,
     val name: String,
     val imageURL: String,
-    val followers : Int,
+    val followers: Int,
     val genre: String,
     var isFavorite: Boolean = false
-    ) : Parcelable
+) : Parcelable

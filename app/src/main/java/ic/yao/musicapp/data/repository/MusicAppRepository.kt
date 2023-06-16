@@ -11,15 +11,12 @@ class MusicAppRepository (
     private val artistDao: ArtistDao
 ) {
     suspend fun getAllAlbums(artistId: String) = api.getAlbums(artistId)
-    suspend fun getAlbumTracks(albumId: String) = api.getAlbumTracks(albumId)
     suspend fun getArtist(query: String) = api.getArtist(query)
 
     suspend fun updateRecentSearchedArtist(artis: RecentSearchedArtist) {
         artistDao.updateRecentSearchedArtist(artis)
     }
-    suspend fun updateFavoriteArtist(artis: FavoriteArtist) {
-        artistDao.updateFavoriteArtist(artis)
-    }
+
     fun getAllRecentSearchedArtists() = artistDao.getAllRecentSearchedArtists()
     fun getAllFavoriteArtists() = artistDao.getAllFavoriteArtists()
 
@@ -28,10 +25,6 @@ class MusicAppRepository (
     }
     suspend fun addFavoriteArtist(artis: FavoriteArtist) {
         artistDao.insertFavoriteArtist(artis)
-    }
-
-    suspend fun removeRecentSearchedArtist(artis: RecentSearchedArtist) {
-        artistDao.deleteRecentSearchedArtist(artis)
     }
 
     suspend fun removeFavoriteArtist(artis: FavoriteArtist) {
